@@ -15,6 +15,14 @@ const mainReducer = (state = initialState, action) => {
           content: [...state.cart.content, action.payload]
         }
       }
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          content: state.cart.content.filter((book, i) => i !== action.payload)
+        }
+      }
 
     default:
       return state
